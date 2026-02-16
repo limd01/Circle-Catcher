@@ -74,7 +74,11 @@ public class Controller {
 
     private void startExtraGame() {
         resetGameState(); 
-        gameTimeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> Platform.runLater(this::addNewCircle)));
+         // Spawn 5 circles immediately at the start
+        for (int i = 0; i < TOTAL_CIRCLES; i++) {
+            addNewCircle();
+        }
+        gameTimeline = new Timeline(new KeyFrame(Duration.seconds(1.2), e -> Platform.runLater(this::addNewCircle)));
         gameTimeline.setCycleCount(Timeline.INDEFINITE);
         gameTimeline.play();
     }
@@ -138,4 +142,5 @@ public class Controller {
         }
     }
 }
+
 
